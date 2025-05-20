@@ -2,10 +2,16 @@ import Project from "../models/Project.js";
 
 export const postProject = async (req, res) => {
   try {
-    const { title, description, location, budget, deadline, files } = req.body;
+    const { title,
+       description,
+        location,
+         budget,
+          biddingDeadline,
+           ProjectDeadline,
+            files } = req.body;
     const customerId = req.user.userId; // assuming auth middleware sets req.user
 
-    if (!title || !description || !location || !budget || !deadline) {
+    if (!title || !description || !location || !budget || !ProjectDeadline || !biddingDeadline) {
       return res
         .status(400)
         .json({ message: "Please provide all required fields" });
@@ -16,7 +22,8 @@ export const postProject = async (req, res) => {
       description,
       location,
       budget,
-      deadline,
+      biddingDeadline,
+      ProjectDeadline,
       files: files || [],
       customerId,
     });

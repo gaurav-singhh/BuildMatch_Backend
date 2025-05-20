@@ -3,8 +3,10 @@ import dotenv from "dotenv";
 import connectDB from "./config/db.js";
 import cookieParser from "cookie-parser";
 import cors from "cors";
-import authRoutes from "./routes/authRoutes.js"; // if this is your route file
+import authRoutes from "./routes/authRoutes.js";
 import projectRoutes from "./routes/projectRoutes.js";
+import bidRoutes from "./routes/bidRoutes.js";
+
 dotenv.config();
 connectDB();
 
@@ -25,6 +27,8 @@ app.use(
 // Routes
 app.use("/api/auth", authRoutes);
 app.use("/api/project", projectRoutes);
+app.use("/api/projects/:projectId/bids", bidRoutes);
+
 // Start server
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
