@@ -33,7 +33,7 @@ const projectSchema = new mongoose.Schema(
       required: true,
     },
 
-    ProjectDeadline: {
+    projectDeadline: {
       type: Date,
       required: true,
     },
@@ -52,12 +52,14 @@ const projectSchema = new mongoose.Schema(
       required: true,
     },
 
+
     // Current status of the project
-    status: {
-      type: String,
-      enum: ["open", "closed", "in progress", "completed", "cancelled"],
-      default: "open",
-    },
+status: {
+  type: String,
+  enum: ["open", "in-progress", "completed", "assigned"], // <-- Added "assigned"
+  default: "open",
+},
+
 
     // Boolean flag to manually or programmatically close bidding
     biddingClosed: {

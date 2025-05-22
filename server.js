@@ -6,7 +6,9 @@ import cors from "cors";
 import authRoutes from "./routes/authRoutes.js";
 import projectRoutes from "./routes/projectRoutes.js";
 import bidRoutes from "./routes/bidRoutes.js";
-
+import contractorRoutes from "./routes/contractorRoutes.js";
+import userRoutes from "./routes/userRoutes.js";
+import jobRequetRoutes from "./routes/jobRequetRoutes.js";
 dotenv.config();
 connectDB();
 
@@ -28,7 +30,9 @@ app.use(
 app.use("/api/auth", authRoutes);
 app.use("/api/project", projectRoutes);
 app.use("/api/projects/:projectId/bids", bidRoutes);
-
+app.use("/api/contractor-profile", contractorRoutes);
+app.use("/api/user-profile", userRoutes);
+app.use("/api/job-request",jobRequetRoutes)
 // Start server
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
